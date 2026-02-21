@@ -15,6 +15,9 @@ A stunning liquid glass backdrop effect for Home Assistant cards. Uses SVG displ
 - Automatic application via classes or configuration
 - Custom radius and rim control
 
+> [!IMPORTANT]
+> This effect relies on advanced SVG filters and CSS features currently only supported by **Chromium-based browsers** (Chrome, Edge, Brave, etc.). It may not render correctly in Firefox or Safari.
+
 ## Installation
 
 ### HACS (Recommended)
