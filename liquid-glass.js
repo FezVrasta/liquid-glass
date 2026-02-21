@@ -323,7 +323,8 @@
       this.resizeObserver.observe(element);
 
       // Apply backdrop-filter
-      const backdropFilter = `url(#${this.id}_filter) blur(0.5px) contrast(1.05) brightness(1.02) saturate(1.05)`;
+      const blur = options.blur !== undefined ? options.blur : 0.5;
+      const backdropFilter = `url(#${this.id}_filter) blur(${blur}px) contrast(1.05) brightness(1.02) saturate(1.05)`;
       element.style.backdropFilter = backdropFilter;
       element.style.webkitBackdropFilter = backdropFilter;
 
@@ -410,7 +411,7 @@
           element;
       }
 
-      // Get border radius from CSS variable (check both element and target) or from target's computed style
+      // Get border radius and blur from CSS variables (check both element and target) or from target's computed style
       const elementStyle = getComputedStyle(element);
       const targetStyle = getComputedStyle(target);
       let borderRadius =
@@ -418,6 +419,11 @@
         parseFloat(targetStyle.getPropertyValue('--liquid-glass-radius')) ||
         parseFloat(targetStyle.borderRadius) ||
         12;
+      
+      let blur = 
+        parseFloat(elementStyle.getPropertyValue('--liquid-glass-blur')) ||
+        parseFloat(targetStyle.getPropertyValue('--liquid-glass-blur')) ||
+        0.5;
 
       if (target.parentElement) {
         const parentStyle = getComputedStyle(target.parentElement);
@@ -429,6 +435,7 @@
       return this.applyTo(target, {
         rimContainer: target.parentElement || target,
         borderRadius: borderRadius,
+        blur: blur,
         rim: showRim,
         squircle: squircle,
       });

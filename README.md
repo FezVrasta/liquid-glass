@@ -58,6 +58,7 @@ card_mod:
   style: |
     :host {
       --liquid-glass-radius: 24px;
+      --liquid-glass-blur: 8px;
     }
 ```
 
