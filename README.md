@@ -2,6 +2,8 @@
 
 A stunning liquid glass backdrop effect for Home Assistant cards. Uses SVG displacement filters and squircle masking for a modern, frosted glass appearance.
 
+![Demo](demo.gif)
+
 ## Features
 
 - High-performance SVG displacement filter backdrop
