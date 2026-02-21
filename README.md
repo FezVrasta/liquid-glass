@@ -69,6 +69,36 @@ card_mod:
     }
 ```
 
+## Developer Integration
+
+If you are a custom card developer, you can integrate Liquid Glass directly into your card for a premium refractive look.
+
+### Check availability and apply
+
+```javascript
+if (window.LiquidGlass) {
+  this._liquidGlassEffect = window.LiquidGlass.applyTo(targetElement, {
+    borderRadius: 24, // Corner radius in px
+    squircle: true,   // Enable G2 continuity squircle masking
+    rim: true,        // Enable the decorative glass edge
+    blur: 1.0,        // Refraction intensity (default: 0.5)
+  });
+}
+```
+
+### Cleanup
+
+Make sure to destroy the effect when your card is disconnected to prevent memory leaks:
+
+```javascript
+disconnectedCallback() {
+  if (this._liquidGlassEffect) {
+    this._liquidGlassEffect.destroy();
+    this._liquidGlassEffect = null;
+  }
+}
+```
+
 ## License
 
 MIT License - see [LICENSE](LICENSE) for details.
